@@ -23,7 +23,7 @@ root = int(num)
 # float(num) 하면 왜인지 모르겠지만 자꾸 str라고 처리함.
 
 for i in range(exp-1):
-    root = root * num 
+    root = root * num s
 
 #지피티 추천 코드 깔끔하게 변환:
 # root = 1 초기값을 1로 주어야 함.
