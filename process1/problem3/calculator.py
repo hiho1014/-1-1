@@ -3,25 +3,43 @@
 #input("실수 2개와 연산자를 입력해주세요.", a, c, b)
 #tuple("input")
 
-a = input("첫번째 실수를 입력")
+if __name__ == "__main__":
+    a = input("첫번째 실수를 입력")
 
-b = input("Division를 입력")
+# 여기서 invalid number input 처리
 
-if a.isnumeric() :
+#이렇게 하면 숫자 검증 방식이 틀림. 이 메소드는 정수 양수만 가능
+# if a.isnumeric() :
+#     a = float(a)
+# else :
+#     print("Invalid number input.")
+
+try:
     a = float(a)
-else :
+except ValueError:
     print("Invalid number input.")
+    exit()
 
 
-if b.isnumeric() :
+b = input("두번째 실수를 입력")
+
+# 여기서 invalid number input 처리
+
+
+try:
     b = float(b)
-else :
+except ValueError:
     print("Invalid number input.")
-#elif b == 0 :
-#    print("Error: Division by zero.")
- 
+    exit()
 
-c = input("+, -, *, / 중에 하나를 입력하세요.")
+
+
+# if b.isnumeric() :
+#     b = float(b)
+# else:
+#     print("Invalid number input.")
+
+
 
 #if c != in [+, -, *, /] :
 #    print("Invalid operator.")
@@ -39,10 +57,29 @@ def subtract(a, b) :
 def multiply(a, b) :
     return a * b
 def divide(a, b) :
-    return a / b
+     if b == 0:
+        print("Error: Division by zero.")
+        exit()
+        return a / b
 
 
-# 간단하게 하려면 역시 다중이프인가... 
+c = input("+, -, *, / 중에 하나를 입력하세요.")
+
+#mapping 변수 지정해서 딕셔너리 사용
+
+map = {"+":add, "-":subtract, "*":multiply, "/" : divide}
+
+
+if c in map :
+    func = map[c]
+    result = func(a,b)
+    print("Result:", result)
+else:
+    print("Invalid operator.")
+
+
+
+# 간단하게 하려면 역시 다중이프인가... 라고 시도해봤음
 #if c == "+" : 
 #    w = add(a,b)
 #elif c == "-" : 
@@ -55,13 +92,17 @@ def divide(a, b) :
 #print("Result: ", w)
 
 
-#mapping 변수 지정해서 딕셔너리 사용? 아래는 지피티가 알려준 방법.
 
-map = {"+":add, "-":subtract, "*":multiply, "/" : divide}
 
 #map이라는 사전 안에 c라는 요소들이 있다면, func는 map 안에서 그 c의 키워드에 대응되는 거임. 
-if c in map :
-    func = map[c]
-#    result = func(a,b)
+
+
+
+
+
+# 틀린 것
 #    print(result)
-    print(func(a,b))
+#    print(func(a,b))
+
+#또는
+#print(f"Result: {func(a, b)}")
