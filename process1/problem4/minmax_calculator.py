@@ -27,9 +27,13 @@ def main():
         # 리스트를 오름차순 정렬 (min이 맨 앞, max가 맨 뒤로 감)
         list_n.sort()
 
-        # pop으로 최소값(맨 앞), 최대값(맨 뒤) 꺼냄
+        # pop으로 최소값(맨 앞), 최대값(맨 뒤) 꺼냄. pop은 큐 자료구조에 적합. 리스트도 큐긴 함. 
         min_val = list_n.pop(0)
         max_val = list_n.pop(-1)
+
+        # 이렇게도 된다고 함. pop으로 하는 것보다 이게 더 간편하고 빠른건가?
+        # min_val = list_n[0]
+        # max_val = list_n[-1]
 
         print(f"Min: {min_val}, Max: {max_val}")
 
