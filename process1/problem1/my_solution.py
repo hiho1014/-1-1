@@ -1,34 +1,13 @@
-#1. 거듭제곱할 숫자를 입력받음
-num = input("Enter number: ")
+def hello(): 
+    print(__name__)
+    return "Hello"
+a = 1
 
-#문자열 메소드로 숫자인지 확인함. 숫자형이면 실수로 변환해주고, 이상한 입력이면 오류메세지.
-if num.isnumeric() :
-    num = float(num)
-else :
-    print("Invalid number input.")
-
-#2. 지수를 입력 받음 
-exp = input("Enter exponent: ")
+if __name__ == "__main__":
+    print(__name__)
+    print(hello())
 
 
-# 입력받은 값의 타입이 int가 맞는지 확인함
-# int 타입은 문자열 메소드들을 쓸 수 없다고 함. 뒤에 나오는데 왜지
-# if type(exp) == int :
-if exp.isdecimal() :
-    exp = int(exp)
-else :
-    print("Invalid exponent input.")
-
-root = int(num)
-# float(num) 하면 왜인지 모르겠지만 자꾸 str라고 처리함.
-
-for i in range(exp-1):
-    root = root * num 
-
-#지피티 추천 코드 깔끔하게 변환:
-# root = 1 초기값을 1로 주어야 함.
-# for i in range(exp) :
-# root = root * num
-
-# &은 문자열만 가능함.
-print("Result: ", root)
+#원래 거 코드 이상함 고쳐야됨;; 이 파일은 평가자분이 재구현 가능하다고 봐주신 거 
+# pip < 파이썬 패키지 설치 함수
+#name 이거 없어도 실행은 되긴 하는데 저거는 이 모듈이 메인인지 아닌지 보는 거...

@@ -1,29 +1,45 @@
-#1. 거듭제곱할 숫자를 입력받음
-num = input("Enter number: ")
+import math
 
-#문자열 메소드로 숫자인지 확인함. 숫자형이면 실수로 변환해주고, 이상한 입력이면 오류메세지.
-if num.isnumeric() :
+def is_number(value):
+    try:
+        num = float(value)
+        return math.isfinite(num)
+    except ValueError:
+        return False
+    
+def is_int(value):
+    try:
+        num = int(value)
+        return True
+    except ValueError:
+        return False
+
+def main():
+    #1. 거듭제곱할 숫자를 입력받음
+    num = input("Enter number: ")
+    
+    if not is_number(num):
+        print("Invalid number input.")
+        return
     num = float(num)
-else :
-    print("Invalid number input.")
 
-#2. 지수를 입력 받음 
-exp = input("Enter exponent: ")
-
-
-# 입력받은 값의 타입이 int가 맞는지 확인함
-# int 타입은 문자열 메소드들을 쓸 수 없다고 함. 뒤에 나오는데 왜지
-# if type(exp) == int :
-if exp.isdecimal() :
+    #2. 지수를 입력 받음 
+    exp = input("Enter exponent: ")
+    if not is_int(exp):
+        print("Invalid exponent input.")
+        return
     exp = int(exp)
-else :
-    print("Invalid exponent input.")
 
-root = int(num)
-# float(num) 하면 왜인지 모르겠지만 자꾸 str라고 처리함.
+    root = num
+    for i in range(abs(exp)-1):
+        root = root * num
 
-for i in range(exp-1):
-    root = root * num s
+    if exp == 0:
+        root = 1;
+    if exp < 0:
+        root = 1 / root
+
+    
 
 #지피티 추천 코드 깔끔하게 변환:
 # root = 1 초기값을 1로 주어야 함.
@@ -31,4 +47,7 @@ for i in range(exp-1):
 # root = root * num
 
 # &은 문자열만 가능함.
-print("Result: ", root)
+    print("Result: ", root)
+
+if __name__ == '__main__':
+    main()
